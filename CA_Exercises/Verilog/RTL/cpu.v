@@ -57,7 +57,7 @@ wire [63:0] regfile_rdata_1_ID_EX, regfile_rdata_2_ID_EX,branch_pc_EX_MEM,jump_p
 wire        reg_write_ID_EX,branch_ID_EX,alu_src_ID_EX,
             mem_write_ID_EX,mem_read_ID_EX,mem_write_EX_MEM,mem_read_EX_MEM,
             branch_EX_MEM,jump_EX_MEM,jump_ID_EX,reg_write_EX_MEM,mem_2_reg_EX_MEM,mem_2_reg_MEM_WB,reg_write_MEM_WB;
-wire [1:0]  alu_op_ID_EX;
+wire [1:0]  alu_op_ID_EX, ForwardA, ForwardB;
 
 wire signed [63:0] immediate_extended,immediate_extended_ID_EX;
 
@@ -502,14 +502,34 @@ alu_control alu_ctrl(
    .alu_control    (alu_control       )
 );
 
-mux_2 #(
+// mux_2 #(
+//    .DATA_W(64)
+// ) alu_operand_mux (
+//    .input_a (immediate_extended_ID_EX),
+//    .input_b (regfile_rdata_2_ID_EX   ),
+//    .select_a(alu_src_ID_EX           ),
+//    .mux_out (alu_operand_2     )
+// );
+
+mux_3 #(
    .DATA_W(64)
-) alu_operand_mux (
-   .input_a (immediate_extended_ID_EX),
-   .input_b (regfile_rdata_2_ID_EX   ),
-   .select_a(alu_src_ID_EX           ),
-   .mux_out (alu_operand_2     )
-);
+) alu_operand_mux1 (
+   .input_a (regfile_rdata_2_ID_EX  ),
+   .input_b (),
+   .input_c (),
+   .select_a(ForwardA),
+   .mux_out ()
+)
+
+mux_3 #(
+   .DATA_W(64)
+) alu_operand_mux2 (
+   .input_a (regfile_rdata_2_ID_EX  ),
+   .input_b (),
+   .input_c (),
+   .select_a(ForwardB),
+   .mux_out ()
+)
 
 alu#(
    .DATA_W(64)
