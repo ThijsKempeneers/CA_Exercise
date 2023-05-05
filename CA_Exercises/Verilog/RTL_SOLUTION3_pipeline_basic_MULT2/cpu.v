@@ -56,7 +56,7 @@ wire [63:0] regfile_rdata_1_ID_EX, regfile_rdata_2_ID_EX,branch_pc_EX_MEM,jump_p
             alu_out_EX_MEM, regfile_rdata_2_EX_MEM,mem_data_MEM_WB,alu_out_MEM_WB;
 wire        reg_write_ID_EX,branch_ID_EX,alu_src_ID_EX,
             mem_write_ID_EX,mem_read_ID_EX,mem_write_EX_MEM,mem_read_EX_MEM,
-            branch_EX_MEM,jump_EX_MEM,reg_write_EX_MEM,mem_2_reg_EX_MEM,mem_2_reg_MEM_WB,reg_write_MEM_WB;
+            branch_EX_MEM,jump_EX_MEM,jump_ID_EX,reg_write_EX_MEM,mem_2_reg_EX_MEM,mem_2_reg_MEM_WB,reg_write_MEM_WB;
 wire [1:0]  alu_op_ID_EX;
 
 wire signed [63:0] immediate_extended,immediate_extended_ID_EX;
@@ -72,7 +72,7 @@ pc #(
    .clk       (clk       ),
    .arst_n    (arst_n    ),
    .branch_pc (branch_pc_EX_MEM ),
-   .jump_pc   (jump_pc   ),
+   .jump_pc   (jump_pc_EX_MEM   ),
    .zero_flag (zero_flag_EX_MEM),
    .branch    (branch_EX_MEM),
    .jump      (jump_EX_MEM),
@@ -252,6 +252,17 @@ reg_arstn_en#(
    .dout       (alu_src_ID_EX)
 );
 
+// Pipeline register for jump
+reg_arstn_en#(
+   .DATA_W(1)
+)signal_pipe_ID_EX13(
+   .clk        (clk  ),
+   .arst_n     (arst_n),
+   .din        (jump),
+   .en         (enable        ),
+   .dout       (jump_ID_EX    )
+);
+
 // EX_MEM Pipeline register for instruction signal
 reg_arstn_en#(
    .DATA_W(32)
@@ -373,7 +384,7 @@ reg_arstn_en#(
    .dout       (mem_2_reg_EX_MEM)
 );
 
-// Pipeline register for mem_2_reg
+// Pipeline register for regwrite
 reg_arstn_en#(
    .DATA_W(1)
 )signal_pipe_EX_MEM11(
@@ -382,6 +393,17 @@ reg_arstn_en#(
    .din        (reg_write_ID_EX),
    .en         (enable),
    .dout       (reg_write_EX_MEM)
+);
+
+// Pipeline register for jump
+reg_arstn_en#(
+   .DATA_W(1)
+)signal_pipe_EX_MEM12(
+   .clk        (clk  ),
+   .arst_n     (arst_n),
+   .din        (jump_ID_EX),
+   .en         (enable),
+   .dout       (jump_EX_MEM)
 );
 
 // Pipeline register for mem_data
@@ -463,7 +485,7 @@ register_file #(
 ) register_file(
    .clk      (clk               ),
    .arst_n   (arst_n            ),
-   .reg_write(reg_write_ID_EX         ),
+   .reg_write(reg_write_MEM_WB        ),
    .raddr_1  (instruction_IF_ID[19:15]),
    .raddr_2  (instruction_IF_ID[24:20]),
    .waddr    (instruction_MEM_WB[11:7] ),
