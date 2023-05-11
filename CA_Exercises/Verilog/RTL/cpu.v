@@ -56,7 +56,7 @@ wire [63:0] regfile_rdata_1_ID_EX, regfile_rdata_2_ID_EX,branch_pc_EX_MEM,jump_p
             alu_out_EX_MEM, regfile_rdata_2_EX_MEM,mem_data_MEM_WB,alu_out_MEM_WB,mux3_1_out,mux3_2_out;
 wire        reg_write_ID_EX,branch_ID_EX,alu_src_ID_EX,
             mem_write_ID_EX,mem_read_ID_EX,mem_write_EX_MEM,mem_read_EX_MEM,
-            branch_EX_MEM,jump_EX_MEM,jump_ID_EX,reg_write_EX_MEM,mem_2_reg_EX_MEM,mem_2_reg_MEM_WB,reg_write_MEM_WB;
+            branch_EX_MEM,jump_EX_MEM,jump_ID_EX,reg_write_EX_MEM,mem_2_reg_EX_MEM,mem_2_reg_MEM_WB,reg_write_MEM_WB,stall;
 wire [1:0]  alu_op_ID_EX, ForwardA, ForwardB;
 
 wire signed [63:0] immediate_extended,immediate_extended_ID_EX;
@@ -570,6 +570,23 @@ branch_unit#(
    .jump_pc            (jump_pc           )
 );
 
+hazard_detection_unit hdu(
+    .mem_read_ID_EX(mem_read_ID_EX),
+    .RegisterRs1_IF_ID(instruction_IF_ID[19:15]),
+    .RegisterRs2_IF_ID(instruction_IF_ID[24:20]),
+    .RegisterRd_ID_EX(instruction_ID_EX[11:7]),
+    .stall(stall)
+);
+
+// stop all control signals from propagating if stall
+mux_2 #(
+   .DATA_W(64)
+) stall_mux (
+   .input_a  (64'd0),
+   .input_b  (),
+   .select_a (stall),
+   .mux_out  ()
+);
 
 endmodule
 

@@ -1,19 +1,15 @@
-module hazard_detection_unit(mem_read_ID_EX, IF_IDRegisterRs1, IF_IDRegisterRs2, ID_EXRegisterRd, stall);
+module hazard_detection_unit(
+    input mem_read_ID_EX,
+    input[4:0] RegisterRs1_IF_ID, RegisterRs2_IF_ID, RegisterRd_ID_EX,
+    output reg stall
+    );
 
-input mem_read_ID_EX;
-input[4:0] IF_IDRegisterRs1, IF_IDRegisterRs2, ID_EXRegisterRd;
-output reg stall;
-
-always @(mem_read_ID_EX, IF_IDRegisterRs1, IF_IDRegisterRs2, ID_EXRegisterRd)
+    always @(mem_read_ID_EX, RegisterRs1_IF_ID, RegisterRs2_IF_ID, RegisterRd_ID_EX)
 	begin
-	  if((mem_read_ID_EX == 1) && ((ID_EXRegisterRd ==IF_IDRegisterRs1)||(ID_EXRegisterRd ==IF_IDRegisterRs2)))
-	    begin
+	  if((mem_read_ID_EX == 1) && ((RegisterRd_ID_EX == RegisterRs1_IF_ID)||(RegisterRd_ID_EX == RegisterRs2_IF_ID)))
 	      stall = 1;
-	    end
 	  else
-	    begin
 	      stall = 0;
-	    end
 	end
 
 endmodule
