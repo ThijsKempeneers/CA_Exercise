@@ -56,7 +56,9 @@ wire [63:0] regfile_rdata_1_ID_EX, regfile_rdata_2_ID_EX,branch_pc_EX_MEM,jump_p
             alu_out_EX_MEM, regfile_rdata_2_EX_MEM,mem_data_MEM_WB,alu_out_MEM_WB,mux3_1_out,mux3_2_out;
 wire        reg_write_ID_EX,branch_ID_EX,alu_src_ID_EX,
             mem_write_ID_EX,mem_read_ID_EX,mem_write_EX_MEM,mem_read_EX_MEM,
-            branch_EX_MEM,jump_EX_MEM,jump_ID_EX,reg_write_EX_MEM,mem_2_reg_EX_MEM,mem_2_reg_MEM_WB,reg_write_MEM_WB,stall;
+            branch_EX_MEM,jump_EX_MEM,jump_ID_EX,reg_write_EX_MEM,
+            mem_2_reg_EX_MEM,mem_2_reg_MEM_WB,reg_write_MEM_WB,stall,branch_taken,
+            IF_flush;
 wire [1:0]  alu_op_ID_EX, ForwardA, ForwardB;
 
 wire signed [63:0] immediate_extended,immediate_extended_ID_EX;
@@ -102,13 +104,14 @@ sram_BW32 #(
 
 
 // IF_ID Pipeline register for instruction signal
-reg_arstn_en#(
+reg_arstn_flush#(
    .DATA_W(32) // width of the forwarded signal
 )signal_pipe_IF_ID1(
    .clk        (clk  ),
    .arst_n     (arst_n),
    .din        (instruction   ),
    .en         (enable && !stall),
+   .flush      (IF_flush),
    .dout       (instruction_IF_ID)
 );
 
@@ -471,6 +474,7 @@ sram_BW64 #(
 
 control_unit control_unit(
    .opcode   (instruction_IF_ID[6:0]),
+   .branch_taken (branch_taken),
    .alu_op   (control_signals[9:8]),
    .reg_dst  (control_signals[7]),
    .branch   (control_signals[6]),
@@ -479,7 +483,8 @@ control_unit control_unit(
    .mem_write(control_signals[3]),
    .alu_src  (control_signals[2]),
    .reg_write(control_signals[1]),
-   .jump     (control_signals[0])
+   .jump     (control_signals[0]),
+   .IF_flush (IF_flush)
 );
 
 // stop all control signals from propagating if stall
@@ -590,6 +595,8 @@ hazard_detection_unit hdu(
     .RegisterRd_ID_EX(instruction_ID_EX[11:7]),
     .stall(stall)
 );
+
+assign branch_taken = (regfile_rdata_1 == regfile_rdata_2);
 
 endmodule
 

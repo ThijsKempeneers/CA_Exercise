@@ -1,5 +1,5 @@
 ncverilog(64): 15.20-s058: (c) Copyright 1995-2018 Cadence Design Systems, Inc.
-TOOL:	ncverilog	15.20-s058: Started on May 17, 2023 at 18:04:29 CEST
+TOOL:	ncverilog	15.20-s058: Started on May 17, 2023 at 18:45:16 CEST
 ncverilog
 	+sv
 	-f files_verilog.f
@@ -20,10 +20,39 @@ ncverilog
 		../Verilog/RTL/forwarding_unit.v
 		../Verilog/RTL/hazard_detection_unit.v
 		../Verilog/RTL/mux_3.v
+		../Verilog/RTL/reg_arstn_flush.v
 	+nc64bit
 	+nctimescale+1ns/10ps
 	+access+rwc
 	-ALLOWREDEFINITION
+Recompiling... reason: file '../Verilog/RTL/control_unit.v' is newer than expected.
+	expected: Wed May 17 18:22:53 2023
+	actual:   Wed May 17 18:45:09 2023
+file: ../Verilog/RTL/control_unit.v
+	module worklib.control_unit:v
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+ncelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.control_unit:v <0x05ddc70a>
+			streams:   1, words:  7127
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                  Instances  Unique
+		Modules:                 56      20
+		Registers:              177     110
+		Scalar wires:            53       -
+		Expanded wires:          44       3
+		Vectored wires:          68       -
+		Always blocks:          112      45
+		Initial blocks:           3       3
+		Cont. assignments:        4       7
+		Pseudo assignments:      38      38
+		Simulation timescale:  10ps
+	Writing initial simulation snapshot: worklib.reg_arstn:v
 Loading snapshot worklib.reg_arstn:v .................... Done
 ncsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
 ncsim> source /esat/micas-data/software/Cadence/incisiv_15.20.058/tools/inca/files/ncsimrc
@@ -38,4 +67,4 @@ Mult3 Working Correctly
 Simulation complete via $finish(1) at time 31050 NS + 8
 ../Verilog/cpu_tb.v:324    $finish;
 ncsim> exit
-TOOL:	ncverilog	15.20-s058: Exiting on May 17, 2023 at 18:04:30 CEST  (total: 00:00:01)
+TOOL:	ncverilog	15.20-s058: Exiting on May 17, 2023 at 18:45:17 CEST  (total: 00:00:01)

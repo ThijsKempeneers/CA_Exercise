@@ -1,8 +1,8 @@
 1683276593 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/RTL/alu.v
 1683276593 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/RTL/alu_control.v
 1683276593 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/RTL/branch_unit.v
-1683276593 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/RTL/control_unit.v
-1684338904 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/RTL/cpu.v
+1684341909 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/RTL/control_unit.v
+1684341547 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/RTL/cpu.v
 1683276593 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/RTL/immediate_extend_unit.v
 1683276593 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/RTL/mux_2.v
 1684339379 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/RTL/pc.v
@@ -15,3 +15,4 @@
 1683841593 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/RTL/forwarding_unit.v
 1684337646 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/RTL/hazard_detection_unit.v
 1683839424 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/RTL/mux_3.v
+1684341756 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/RTL/reg_arstn_flush.v

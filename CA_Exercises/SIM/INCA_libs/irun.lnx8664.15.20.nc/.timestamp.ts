@@ -7,11 +7,13 @@
 1683276593 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/RTL/alu_control.v
 1683276593 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/RTL/alu.v
 1683276593 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/cpu_tb.v
+1684341508 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/RTL/reg_arstn_en_flush.v
 1684339379 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/RTL/pc.v
 1684337646 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/RTL/hazard_detection_unit.v
 1683276593 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/RTL/branch_unit.v
 1683276594 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/sky130_sram_2rw.v
+1684341909 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/RTL/control_unit.v
 1683276593 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/RTL/sram.v
-1683276593 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/RTL/control_unit.v
+1684341756 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/RTL/reg_arstn_flush.v
 1683841593 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/RTL/forwarding_unit.v
-1684338904 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/RTL/cpu.v
+1684341547 /users/students/r0800906/CA_Exercise/CA_Exercises/Verilog/RTL/cpu.v
