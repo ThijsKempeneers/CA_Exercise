@@ -1,5 +1,5 @@
 ncverilog(64): 15.20-s058: (c) Copyright 1995-2018 Cadence Design Systems, Inc.
-TOOL:	ncverilog	15.20-s058: Started on May 11, 2023 at 23:47:48 CEST
+TOOL:	ncverilog	15.20-s058: Started on May 17, 2023 at 18:04:29 CEST
 ncverilog
 	+sv
 	-f files_verilog.f
@@ -24,28 +24,6 @@ ncverilog
 	+nctimescale+1ns/10ps
 	+access+rwc
 	-ALLOWREDEFINITION
-Recompiling... reason: file '../Verilog/RTL/forwarding_unit.v' is newer than expected.
-	expected: Thu May 11 23:46:21 2023
-	actual:   Thu May 11 23:46:33 2023
-		Caching library 'worklib' ....... Done
-	Elaborating the design hierarchy:
-ncelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
-	Building instance overlay tables: .................... Done
-	Building instance specific data structures.
-	Loading native compiled code:     .................... Done
-	Design hierarchy summary:
-		                  Instances  Unique
-		Modules:                 55      19
-		Registers:              175     107
-		Scalar wires:            50       -
-		Expanded wires:          32       1
-		Vectored wires:          69       -
-		Always blocks:          111      43
-		Initial blocks:           3       3
-		Cont. assignments:        3       5
-		Pseudo assignments:      36      36
-		Simulation timescale:  10ps
-	Writing initial simulation snapshot: worklib.reg_arstn:v
 Loading snapshot worklib.reg_arstn:v .................... Done
 ncsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
 ncsim> source /esat/micas-data/software/Cadence/incisiv_15.20.058/tools/inca/files/ncsimrc
@@ -56,8 +34,8 @@ Start Execution
 [1;34m
 Mult3 Working Correctly
 [0m
-         25 cycles
-Simulation complete via $finish(1) at time 30950 NS + 8
+         26 cycles
+Simulation complete via $finish(1) at time 31050 NS + 8
 ../Verilog/cpu_tb.v:324    $finish;
 ncsim> exit
-TOOL:	ncverilog	15.20-s058: Exiting on May 11, 2023 at 23:47:49 CEST  (total: 00:00:01)
+TOOL:	ncverilog	15.20-s058: Exiting on May 17, 2023 at 18:04:30 CEST  (total: 00:00:01)

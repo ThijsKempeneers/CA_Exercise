@@ -61,6 +61,8 @@ wire [1:0]  alu_op_ID_EX, ForwardA, ForwardB;
 
 wire signed [63:0] immediate_extended,immediate_extended_ID_EX;
 
+wire [9:0] control_signals;
+
 immediate_extend_unit immediate_extend_u(
     .instruction         (instruction_IF_ID),
     .immediate_extended  (immediate_extended)
@@ -76,6 +78,7 @@ pc #(
    .zero_flag (zero_flag_EX_MEM),
    .branch    (branch_EX_MEM),
    .jump      (jump_EX_MEM),
+   .stall     (stall     ),
    .current_pc(current_pc),
    .enable    (enable    ),
    .updated_pc(updated_pc)
@@ -105,7 +108,7 @@ reg_arstn_en#(
    .clk        (clk  ),
    .arst_n     (arst_n),
    .din        (instruction   ),
-   .en         (enable        ),
+   .en         (enable && !stall),
    .dout       (instruction_IF_ID)
 );
 
@@ -468,15 +471,25 @@ sram_BW64 #(
 
 control_unit control_unit(
    .opcode   (instruction_IF_ID[6:0]),
-   .alu_op   (alu_op          ),
-   .reg_dst  (reg_dst         ),
-   .branch   (branch          ),
-   .mem_read (mem_read        ),
-   .mem_2_reg(mem_2_reg       ),
-   .mem_write(mem_write       ),
-   .alu_src  (alu_src         ),
-   .reg_write(reg_write       ),
-   .jump     (jump            )
+   .alu_op   (control_signals[9:8]),
+   .reg_dst  (control_signals[7]),
+   .branch   (control_signals[6]),
+   .mem_read (control_signals[5]),
+   .mem_2_reg(control_signals[4]),
+   .mem_write(control_signals[3]),
+   .alu_src  (control_signals[2]),
+   .reg_write(control_signals[1]),
+   .jump     (control_signals[0])
+);
+
+// stop all control signals from propagating if stall
+mux_2 #(
+    .DATA_W(10)
+) stall_control_signals (
+    .input_a (10'd0),
+    .input_b (control_signals	      ),
+    .select_a(stall                 ),
+    .mux_out ({alu_op,reg_dst,branch,mem_read,mem_2_reg,mem_write,alu_src,reg_write,jump})
 );
 
 // ID STAGE
@@ -576,16 +589,6 @@ hazard_detection_unit hdu(
     .RegisterRs2_IF_ID(instruction_IF_ID[24:20]),
     .RegisterRd_ID_EX(instruction_ID_EX[11:7]),
     .stall(stall)
-);
-
-// stop all control signals from propagating if stall
-mux_2 #(
-   .DATA_W(64)
-) stall_mux (
-   .input_a  (64'd0),
-   .input_b  (),
-   .select_a (stall),
-   .mux_out  ()
 );
 
 endmodule

@@ -25,6 +25,7 @@ module pc#(
       input  wire              zero_flag,
       input  wire              branch,
       input  wire              jump,
+      input  wire              stall,
       output reg  [DATA_W-1:0] updated_pc,
       output reg  [DATA_W-1:0] current_pc
    );
@@ -70,10 +71,14 @@ module pc#(
    );
 
    
-   always@(*) updated_pc = current_pc+PC_INCREASE;
+   always@(*) begin
+      if (stall == 1'b0) begin
+         updated_pc = current_pc+PC_INCREASE;
+      end else begin
+         updated_pc = current_pc;
+      end
+   end
 
-
-   
 
 endmodule
 
