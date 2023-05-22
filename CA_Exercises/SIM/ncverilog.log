@@ -1,5 +1,5 @@
 ncverilog(64): 15.20-s058: (c) Copyright 1995-2018 Cadence Design Systems, Inc.
-TOOL:	ncverilog	15.20-s058: Started on May 17, 2023 at 18:45:16 CEST
+TOOL:	ncverilog	15.20-s058: Started on May 22, 2023 at 17:14:33 CEST
 ncverilog
 	+sv
 	-f files_verilog.f
@@ -25,32 +25,40 @@ ncverilog
 	+nctimescale+1ns/10ps
 	+access+rwc
 	-ALLOWREDEFINITION
-Recompiling... reason: file '../Verilog/RTL/control_unit.v' is newer than expected.
-	expected: Wed May 17 18:22:53 2023
-	actual:   Wed May 17 18:45:09 2023
-file: ../Verilog/RTL/control_unit.v
-	module worklib.control_unit:v
-		errors: 0, warnings: 0
+Recompiling... reason: file '../Verilog/RTL/cpu.v' is newer than expected.
+	expected: Mon May 22 17:13:45 2023
+	actual:   Mon May 22 17:14:27 2023
+file: ../Verilog/RTL/cpu.v
+/*
+ |
+ncvlog: *W,NOCMIC (../Verilog/RTL/cpu.v,329|1): error-prone block comment nested within block comment [2.3(IEEE)].
+/*
+ |
+ncvlog: *W,NOCMIC (../Verilog/RTL/cpu.v,331|1): error-prone block comment nested within block comment [2.3(IEEE)].
+	module worklib.cpu:v
+		errors: 0, warnings: 2
 		Caching library 'worklib' ....... Done
 	Elaborating the design hierarchy:
 ncelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
 	Building instance overlay tables: .................... Done
 	Generating native compiled code:
-		worklib.control_unit:v <0x05ddc70a>
-			streams:   1, words:  7127
+		worklib.cpu:v <0x6e0f4120>
+			streams:  12, words:  2073
+		worklib.cpu_tb:v <0x0b75fef6>
+			streams:  27, words: 53827
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
 		                  Instances  Unique
-		Modules:                 56      20
-		Registers:              177     110
-		Scalar wires:            53       -
+		Modules:                 49      20
+		Registers:              163     110
+		Scalar wires:            52       -
 		Expanded wires:          44       3
-		Vectored wires:          68       -
-		Always blocks:          112      45
+		Vectored wires:          69       -
+		Always blocks:           98      45
 		Initial blocks:           3       3
 		Cont. assignments:        4       7
-		Pseudo assignments:      38      38
+		Pseudo assignments:      39      39
 		Simulation timescale:  10ps
 	Writing initial simulation snapshot: worklib.reg_arstn:v
 Loading snapshot worklib.reg_arstn:v .................... Done
@@ -60,11 +68,162 @@ ncsim> run
 
 Start Execution
 
-[1;34m
-Mult3 Working Correctly
+[1;31m
+Error in Mult4[          0] function
+Debug info, value:    0000000000000000000000000000000000000000000000000000000000000000
+Debug info, expected: 0000000000000000000000000000000000000000000000000000001001011000
 [0m
-         26 cycles
-Simulation complete via $finish(1) at time 31050 NS + 8
+[1;31m
+Error in Mult4[          1] function
+Debug info, value:    0000000000000000000000000000000000000000000000000000000000000000
+Debug info, expected: 0000000000000000000000000000000000000000000000000000001010110010
+[0m
+[1;31m
+Error in Mult4[          2] function
+Debug info, value:    0000000000000000000000000000000000000000000000000000000000000000
+Debug info, expected: 0000000000000000000000000000000000000000000000000000001100001100
+[0m
+[1;31m
+Error in Mult4[          3] function
+Debug info, value:    0000000000000000000000000000000000000000000000000000000000000000
+Debug info, expected: 0000000000000000000000000000000000000000000000000000000110101001
+[0m
+[1;31m
+Error in Mult4[          4] function
+Debug info, value:    0000000000000000000000000000000000000000000000000000000000000000
+Debug info, expected: 0000000000000000000000000000000000000000000000000000000111101010
+[0m
+[1;31m
+Error in Mult4[          5] function
+Debug info, value:    0000000000000000000000000000000000000000000000000000000000000000
+Debug info, expected: 0000000000000000000000000000000000000000000000000000001000101011
+[0m
+[1;31m
+Error in Mult4[          6] function
+Debug info, value:    0000000000000000000000000000000000000000000000000000000000000000
+Debug info, expected: 0000000000000000000000000000000000000000000000000000000011111010
+[0m
+[1;31m
+Error in Mult4[          7] function
+Debug info, value:    0000000000000000000000000000000000000000000000000000000000000000
+Debug info, expected: 0000000000000000000000000000000000000000000000000000000100100010
+[0m
+[1;31m
+Error in Mult4[          8] function
+Debug info, value:    0000000000000000000000000000000000000000000000000000000000000000
+Debug info, expected: 0000000000000000000000000000000000000000000000000000000101001010
+[0m
+[1;31m
+Error in Mult4[          9] function
+Debug info, value:    0000000000000000000000000000000000000000000000000000000000000000
+Debug info, expected: 0000000000000000000000000000000000000000000000000000000001001011
+[0m
+[1;31m
+Error in Mult4[         10] function
+Debug info, value:    0000000000000000000000000000000000000000000000000000000000000000
+Debug info, expected: 0000000000000000000000000000000000000000000000000000000001011010
+[0m
+[1;31m
+Error in Mult4[         11] function
+Debug info, value:    0000000000000000000000000000000000000000000000000000000000000000
+Debug info, expected: 0000000000000000000000000000000000000000000000000000000001101001
+[0m
+=== Data Memory Status ===
+Debug info, dmem[          0]:                   20
+=== Data Memory Status ===
+Debug info, dmem[          1]:                   19
+=== Data Memory Status ===
+Debug info, dmem[          2]:                   18
+=== Data Memory Status ===
+Debug info, dmem[          3]:                   17
+=== Data Memory Status ===
+Debug info, dmem[          4]:                   16
+=== Data Memory Status ===
+Debug info, dmem[          5]:                   15
+=== Data Memory Status ===
+Debug info, dmem[          6]:                   14
+=== Data Memory Status ===
+Debug info, dmem[          7]:                   13
+=== Data Memory Status ===
+Debug info, dmem[          8]:                   12
+=== Data Memory Status ===
+Debug info, dmem[          9]:                   11
+=== Data Memory Status ===
+Debug info, dmem[         10]:                   10
+=== Data Memory Status ===
+Debug info, dmem[         11]:                    9
+=== Data Memory Status ===
+Debug info, dmem[         12]:                    8
+=== Data Memory Status ===
+Debug info, dmem[         13]:                    7
+=== Data Memory Status ===
+Debug info, dmem[         14]:                    6
+=== Data Memory Status ===
+Debug info, dmem[         15]:                    5
+=== Data Memory Status ===
+Debug info, dmem[         16]:                    4
+=== Data Memory Status ===
+Debug info, dmem[         17]:                    3
+=== Data Memory Status ===
+Debug info, dmem[         18]:                    2
+=== Data Memory Status ===
+Debug info, dmem[         19]:                    1
+=== Data Memory Status ===
+Debug info, dmem[         20]:                    1
+=== Data Memory Status ===
+Debug info, dmem[         21]:                    4
+=== Data Memory Status ===
+Debug info, dmem[         22]:                    7
+=== Data Memory Status ===
+Debug info, dmem[         23]:                   10
+=== Data Memory Status ===
+Debug info, dmem[         24]:                   13
+=== Data Memory Status ===
+Debug info, dmem[         25]:                    2
+=== Data Memory Status ===
+Debug info, dmem[         26]:                    5
+=== Data Memory Status ===
+Debug info, dmem[         27]:                    8
+=== Data Memory Status ===
+Debug info, dmem[         28]:                   11
+=== Data Memory Status ===
+Debug info, dmem[         29]:                   14
+=== Data Memory Status ===
+Debug info, dmem[         30]:                    3
+=== Data Memory Status ===
+Debug info, dmem[         31]:                    6
+=== Data Memory Status ===
+Debug info, dmem[         32]:                    9
+=== Data Memory Status ===
+Debug info, dmem[         33]:                   12
+=== Data Memory Status ===
+Debug info, dmem[         34]:                   15
+=== Data Memory Status ===
+Debug info, dmem[         35]:                    0
+=== Data Memory Status ===
+Debug info, dmem[         36]:                    0
+=== Data Memory Status ===
+Debug info, dmem[         37]:                    0
+=== Data Memory Status ===
+Debug info, dmem[         38]:                    0
+=== Data Memory Status ===
+Debug info, dmem[         39]:                    0
+=== Data Memory Status ===
+Debug info, dmem[         40]:                    0
+=== Data Memory Status ===
+Debug info, dmem[         41]:                    0
+=== Data Memory Status ===
+Debug info, dmem[         42]:                    0
+=== Data Memory Status ===
+Debug info, dmem[         43]:                    0
+=== Data Memory Status ===
+Debug info, dmem[         44]:                    0
+=== Data Memory Status ===
+Debug info, dmem[         45]:                    0
+=== Data Memory Status ===
+Debug info, dmem[         46]:                    0
+        121 cycles
+Simulation complete via $finish(1) at time 45260 NS + 0
 ../Verilog/cpu_tb.v:324    $finish;
 ncsim> exit
-TOOL:	ncverilog	15.20-s058: Exiting on May 17, 2023 at 18:45:17 CEST  (total: 00:00:01)
+TOOL:	ncverilog	15.20-s058: Exiting on May 22, 2023 at 17:14:33 CEST  (total: 00:00:00)
