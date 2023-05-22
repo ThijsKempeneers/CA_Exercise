@@ -72,10 +72,10 @@ module pc#(
 
    
    always@(*) begin
-      if (stall == 1'b0) begin
-         updated_pc = current_pc+PC_INCREASE;
-      end else begin
+      if (stall == 1'b1 || zero_flag == 1'b1) begin
          updated_pc = current_pc;
+      end else begin
+         updated_pc = current_pc + PC_INCREASE;
       end
    end
 

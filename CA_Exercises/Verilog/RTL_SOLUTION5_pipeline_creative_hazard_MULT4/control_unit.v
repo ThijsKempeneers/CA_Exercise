@@ -3,6 +3,7 @@
 
 module control_unit(
       input  wire [6:0] opcode,
+      input  wire       branch_taken,
       output reg  [1:0] alu_op,
       output reg        reg_dst,
       output reg        branch,
@@ -11,7 +12,8 @@ module control_unit(
       output reg        mem_write,
       output reg        alu_src,
       output reg        reg_write,
-      output reg        jump
+      output reg        jump,
+      output reg        IF_flush
    );
 
    // RISC-V opcode[6:0] (see RISC-V greensheet)
@@ -65,6 +67,7 @@ module control_unit(
             branch    = 1'b1;
             alu_op    = SUB_OPCODE;
             jump      = 1'b0;
+            if (branch_taken) IF_flush = 1'b1;
          end
 
          JUMP:begin
