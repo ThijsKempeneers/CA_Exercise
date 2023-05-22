@@ -70,7 +70,7 @@ module control_unit(
             alu_op    = SUB_OPCODE;
             jump      = 1'b0;
             if (branch_taken) IF_flush = 1'b1;
-	    else IF_flush  = 1'b0;
+	         else IF_flush  = 1'b0;
          end
 
          JUMP:begin
@@ -82,8 +82,7 @@ module control_unit(
             branch    = 1'b0;
             alu_op    = ADD_OPCODE;
             jump      = 1'b1;
-	    if (branch_taken) IF_flush = 1'b1;
-	    else IF_flush  = 1'b0;
+	         IF_flush  = 1'b1;
          end
 
          LOAD:begin
@@ -132,7 +131,7 @@ module control_unit(
             branch    = 1'b0;
             alu_op    = R_TYPE_OPCODE;
             jump      = 1'b0;
-	    IF_flush  = 1'b0;
+	         IF_flush  = 1'b0;
          end
       endcase
    end
