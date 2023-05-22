@@ -2,5 +2,5 @@
 // File created by:  irun
 // Do not modify this file
 
-s1::(22May2023:17:13:53):( ncverilog +sv -f files_verilog.f +nc64bit +nctimescale+1ns/10ps +access+rwc -ALLOWREDEFINITION )
-s2::(22May2023:17:14:33):( ncverilog +sv -f files_verilog.f +nc64bit +nctimescale+1ns/10ps +access+rwc -ALLOWREDEFINITION )
+s1::(22May2023:18:16:15):( ncverilog +sv -f files_verilog.f +nc64bit +nctimescale+1ns/10ps +access+rwc -ALLOWREDEFINITION )
+s2::(22May2023:18:16:34):( ncverilog +sv -f files_verilog.f +nc64bit +nctimescale+1ns/10ps +access+rwc -ALLOWREDEFINITION -linedebug +gui )

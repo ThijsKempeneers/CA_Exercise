@@ -25,6 +25,7 @@
 ../Verilog/RTL/mux_3.v
 ../Verilog/RTL/reg_arstn_flush.v
 -ALLOWREDEFINITION
+-LINEDEBUG
 -CDSLIB
 ./INCA_libs/irun.lnx8664.15.20.nc/cdsrun.lib
 -HDLVAR

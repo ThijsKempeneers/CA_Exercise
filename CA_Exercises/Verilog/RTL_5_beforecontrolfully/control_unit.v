@@ -45,7 +45,6 @@ module control_unit(
             branch    = 1'b0;
             alu_op    = R_TYPE_OPCODE;
             jump      = 1'b0;
-	    IF_flush  = 1'b0;
          end
          
          ALU_I:begin
@@ -57,7 +56,6 @@ module control_unit(
             branch    = 1'b0;
             alu_op    = ADD_OPCODE;
             jump      = 1'b0;
-	    IF_flush  = 1'b0;
          end
          
          BRANCH_EQ:begin
@@ -70,7 +68,6 @@ module control_unit(
             alu_op    = SUB_OPCODE;
             jump      = 1'b0;
             if (branch_taken) IF_flush = 1'b1;
-	    else IF_flush  = 1'b0;
          end
 
          JUMP:begin
@@ -82,8 +79,6 @@ module control_unit(
             branch    = 1'b0;
             alu_op    = ADD_OPCODE;
             jump      = 1'b1;
-	    if (branch_taken) IF_flush = 1'b1;
-	    else IF_flush  = 1'b0;
          end
 
          LOAD:begin
@@ -95,7 +90,6 @@ module control_unit(
             branch    = 1'b0;
             alu_op    = ADD_OPCODE;
             jump      = 1'b0;
-	    IF_flush  = 1'b0;
          end
 
          STORE:begin
@@ -107,7 +101,6 @@ module control_unit(
             branch    = 1'b0;
             alu_op    = R_TYPE_OPCODE;
             jump      = 1'b0;
-	    IF_flush  = 1'b0;
          end
 
          MUL:begin
@@ -119,7 +112,6 @@ module control_unit(
             branch    = 1'b0;
             alu_op    = MUL_OPCODE;
             jump      = 1'b0;
-	    IF_flush  = 1'b0;
          end
          // Declare the control signals for each one of the instructions here...
 
@@ -132,7 +124,6 @@ module control_unit(
             branch    = 1'b0;
             alu_op    = R_TYPE_OPCODE;
             jump      = 1'b0;
-	    IF_flush  = 1'b0;
          end
       endcase
    end

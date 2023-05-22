@@ -75,11 +75,11 @@ pc #(
 ) program_counter (
    .clk       (clk       ),
    .arst_n    (arst_n    ),
-   .branch_pc (branch_pc ),
-   .jump_pc   (jump_pc   ),
-   .zero_flag (IF_flush),
-   .branch    (branch),
-   .jump      (jump),
+   .branch_pc (branch_pc_EX_MEM ),
+   .jump_pc   (jump_pc_EX_MEM   ),
+   .zero_flag (zero_flag_EX_MEM),
+   .branch    (branch_EX_MEM),
+   .jump      (jump_EX_MEM),
    .stall     (stall     ),
    .current_pc(current_pc),
    .enable    (enable    ),
@@ -202,7 +202,7 @@ reg_arstn_en#(
    .en         (enable        ),
    .dout       (mem_2_reg_ID_EX)
 );
-/* not necessary anymore
+
 // Pipeline register for branch
 reg_arstn_en#(
    .DATA_W(1)
@@ -213,7 +213,7 @@ reg_arstn_en#(
    .en         (enable),
    .dout       (branch_ID_EX)
 );
-*/
+
 // Pipeline register for mem_read
 reg_arstn_en#(
    .DATA_W(1)
@@ -258,7 +258,6 @@ reg_arstn_en#(
    .dout       (alu_src_ID_EX)
 );
 
-/* not necessary anymore
 // Pipeline register for jump
 reg_arstn_en#(
    .DATA_W(1)
@@ -269,7 +268,6 @@ reg_arstn_en#(
    .en         (enable        ),
    .dout       (jump_ID_EX    )
 );
-*/
 
 // EX_MEM Pipeline register for instruction signal
 reg_arstn_en#(
@@ -315,7 +313,6 @@ reg_arstn_en#(
    .dout       (alu_out_EX_MEM)
 );
 
-/*
 // EX_MEM Pipeline register for zero_flag
 reg_arstn_en#(
    .DATA_W(1)
@@ -326,9 +323,7 @@ reg_arstn_en#(
    .en         (enable        ),
    .dout       (zero_flag_EX_MEM)
 );
-/*
 
-/*
 // EX_MEM Pipeline register for branch_pc
 reg_arstn_en#(
    .DATA_W(64)
@@ -339,9 +334,7 @@ reg_arstn_en#(
    .en         (enable        ),
    .dout       (branch_pc_EX_MEM)
 );
-*/
 
-/*
 // EX_MEM Pipeline register for jump_pc
 reg_arstn_en#(
    .DATA_W(64)
@@ -352,9 +345,7 @@ reg_arstn_en#(
    .en         (enable        ),
    .dout       (jump_pc_EX_MEM)
 );
-*/
 
-/*
 // EX_MEM Pipeline register for branch
 reg_arstn_en#(
    .DATA_W(1)
@@ -365,7 +356,6 @@ reg_arstn_en#(
    .en         (enable        ),
    .dout       (branch_EX_MEM)
 );
-*/
 
 // Pipeline register for mem_read
 reg_arstn_en#(
@@ -411,7 +401,6 @@ reg_arstn_en#(
    .dout       (reg_write_EX_MEM)
 );
 
-/*
 // Pipeline register for jump
 reg_arstn_en#(
    .DATA_W(1)
@@ -422,7 +411,6 @@ reg_arstn_en#(
    .en         (enable),
    .dout       (jump_EX_MEM)
 );
-*/
 
 // Pipeline register for mem_data
 reg_arstn_en#(
@@ -594,8 +582,8 @@ mux_2 #(
 branch_unit#(
    .DATA_W(64)
 )branch_unit(
-   .updated_pc         (updated_pc_IF_ID  ),
-   .immediate_extended (immediate_extended),
+   .updated_pc         (updated_pc_ID_EX  ),
+   .immediate_extended (immediate_extended_ID_EX),
    .branch_pc          (branch_pc         ),
    .jump_pc            (jump_pc           )
 );
