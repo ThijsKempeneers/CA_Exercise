@@ -37,7 +37,7 @@ always @(Rs2_ID_EX, RegRd_EX_MEM, RegWrite_EX_MEM, RegWrite_MEM_WB, RegRd_MEM_WB
         //     end
         else if (RegWrite_MEM_WB && (RegRd_MEM_WB != 0) && !(RegWrite_EX_MEM && (RegRd_EX_MEM != 0) && (RegRd_EX_MEM == Rs2_ID_EX)) && (RegRd_MEM_WB == Rs2_ID_EX))
             begin
-                ForwardA = 2'b01;
+                ForwardB = 2'b01;
             end
         else 
             begin

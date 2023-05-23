@@ -1,5 +1,5 @@
 ncverilog(64): 15.20-s058: (c) Copyright 1995-2018 Cadence Design Systems, Inc.
-TOOL:	ncverilog	15.20-s058: Started on May 23, 2023 at 22:12:13 CEST
+TOOL:	ncverilog	15.20-s058: Started on May 23, 2023 at 23:29:56 CEST
 ncverilog
 	+sv
 	-f files_verilog.f
@@ -25,46 +25,6 @@ ncverilog
 	+nctimescale+1ns/10ps
 	+access+rwc
 	-ALLOWREDEFINITION
-Recompiling... reason: file '../Verilog/RTL/alu.v' is newer than expected.
-	expected: Mon May 22 16:37:03 2023
-	actual:   Tue May 23 22:12:04 2023
-file: ../Verilog/RTL/alu.v
-	module worklib.alu:v
-		errors: 0, warnings: 0
-file: ../Verilog/RTL/alu_control.v
-	module worklib.alu_control:v
-		errors: 0, warnings: 0
-file: ../Verilog/RTL/cpu.v
-/*
- |
-ncvlog: *W,NOCMIC (../Verilog/RTL/cpu.v,329|1): error-prone block comment nested within block comment [2.3(IEEE)].
-/*
- |
-ncvlog: *W,NOCMIC (../Verilog/RTL/cpu.v,331|1): error-prone block comment nested within block comment [2.3(IEEE)].
-		Caching library 'worklib' ....... Done
-	Elaborating the design hierarchy:
-ncelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
-	Building instance overlay tables: .................... Done
-	Generating native compiled code:
-		worklib.alu:v <0x35a2b962>
-			streams:   6, words:  5204
-		worklib.alu_control:v <0x6f133791>
-			streams:   3, words:  1027
-	Building instance specific data structures.
-	Loading native compiled code:     .................... Done
-	Design hierarchy summary:
-		                  Instances  Unique
-		Modules:                 49      20
-		Registers:              163     110
-		Scalar wires:            52       -
-		Expanded wires:          44       3
-		Vectored wires:          68       -
-		Always blocks:           98      45
-		Initial blocks:           3       3
-		Cont. assignments:        4       7
-		Pseudo assignments:      38      38
-		Simulation timescale:  10ps
-	Writing initial simulation snapshot: worklib.reg_arstn:v
 Loading snapshot worklib.reg_arstn:v .................... Done
 ncsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
 ncsim> source /esat/micas-data/software/Cadence/incisiv_15.20.058/tools/inca/files/ncsimrc
@@ -73,10 +33,10 @@ ncsim> run
 Start Execution
 
 [1;34m
-Mult3 Working Correctly
+Mult4 Working Correctly
 [0m
-         26 cycles
-Simulation complete via $finish(1) at time 31050 NS + 8
+        844 cycles
+Simulation complete via $finish(1) at time 117560 NS + 0
 ../Verilog/cpu_tb.v:324    $finish;
 ncsim> exit
-TOOL:	ncverilog	15.20-s058: Exiting on May 23, 2023 at 22:12:13 CEST  (total: 00:00:00)
+TOOL:	ncverilog	15.20-s058: Exiting on May 23, 2023 at 23:29:57 CEST  (total: 00:00:01)
