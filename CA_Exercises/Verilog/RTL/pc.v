@@ -34,7 +34,7 @@ module pc#(
   
 
    wire [DATA_W-1:0] pc_r,next_pc,next_pc_i;
-   wire              pc_src_prev_cycle,jump_prev_cycle;
+//   wire              pc_src_prev_cycle,jump_prev_cycle;
    reg               pc_src;
       
 

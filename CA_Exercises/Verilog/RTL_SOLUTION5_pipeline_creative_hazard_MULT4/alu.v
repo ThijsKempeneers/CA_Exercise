@@ -82,7 +82,7 @@ module alu #(
 			SLT_OP:  alu_out = slt_out;
 			SLL_OP:  alu_out = sll_out;
 			SRL_OP:  alu_out = srl_out;
-         MUL_OP:  alu_out = mul_out;
+         	MUL_OP:  alu_out = mul_out;
 			default: alu_out =     'd0;
 		endcase
 	end

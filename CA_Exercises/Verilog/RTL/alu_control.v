@@ -45,15 +45,15 @@ module alu_control(
    
    always @(*) begin
 		case(function_field)
-		   FUNC_ADD	:  rtype_op = ADD_OP;
-		   FUNC_SUB	:  rtype_op = SUB_OP;
-		   FUNC_AND	:  rtype_op = AND_OP;
-		   FUNC_OR 	:  rtype_op = OR_OP; 
-		   FUNC_SLT	:  rtype_op = SLT_OP;
-		   FUNC_SLL	:  rtype_op = SLL_OP;
-		   FUNC_SRL	:  rtype_op = SRL_OP;
-         FUNC_MUL :  rtype_op = MUL_OP;
-			default:    rtype_op = 4'd0;
+			FUNC_ADD	:  rtype_op = ADD_OP;
+		   	FUNC_SUB	:  rtype_op = SUB_OP;
+		   	FUNC_AND	:  rtype_op = AND_OP;
+		   	FUNC_OR 	:  rtype_op = OR_OP; 
+		   	FUNC_SLT	:  rtype_op = SLT_OP;
+		   	FUNC_SLL	:  rtype_op = SLL_OP;
+		   	FUNC_SRL	:  rtype_op = SRL_OP;
+     		FUNC_MUL 	:  rtype_op = MUL_OP;
+			default:       rtype_op = 4'd0;
 		endcase
 	end
 

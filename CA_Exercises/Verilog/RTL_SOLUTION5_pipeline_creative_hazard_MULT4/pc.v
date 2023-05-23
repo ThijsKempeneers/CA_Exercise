@@ -34,6 +34,7 @@ module pc#(
   
 
    wire [DATA_W-1:0] pc_r,next_pc,next_pc_i;
+//   wire              pc_src_prev_cycle,jump_prev_cycle;
    reg               pc_src;
       
 
@@ -69,13 +70,34 @@ module pc#(
       .en    (enable    ),
       .dout  (current_pc)
    );
+/*
+   reg_arstn_en#(
+      .DATA_W(DATA_W),
+      .PRESET_VAL('b0)
+   ) pc_register2(
+      .clk   (clk       ),
+      .arst_n(arst_n    ),
+      .din   (pc_src    ),
+      .en    (enable    ),
+      .dout  (pc_src_prev_cycle)
+   );
 
-   
+   reg_arstn_en#(
+      .DATA_W(DATA_W),
+      .PRESET_VAL('b0)
+   ) pc_register3(
+      .clk   (clk       ),
+      .arst_n(arst_n    ),
+      .din   (jump      ),
+      .en    (enable    ),
+      .dout  (jump_prev_cycle)
+   );
+*/
    always@(*) begin
-      if (stall == 1'b0) begin
-         updated_pc = current_pc+PC_INCREASE;
-      end else begin
+      if (stall == 1'b1) begin
          updated_pc = current_pc;
+      end else begin
+         updated_pc = current_pc + PC_INCREASE;
       end
    end
 
