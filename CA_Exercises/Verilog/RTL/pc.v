@@ -70,7 +70,7 @@ module pc#(
       .en    (enable    ),
       .dout  (current_pc)
    );
-
+/*
    reg_arstn_en#(
       .DATA_W(DATA_W),
       .PRESET_VAL('b0)
@@ -92,9 +92,9 @@ module pc#(
       .en    (enable    ),
       .dout  (jump_prev_cycle)
    );
-   
+*/
    always@(*) begin
-      if (stall == 1'b1||pc_src_prev_cycle == 1'b1||jump_prev_cycle == 1'b1) begin
+      if (stall == 1'b1) begin
          updated_pc = current_pc;
       end else begin
          updated_pc = current_pc + PC_INCREASE;
