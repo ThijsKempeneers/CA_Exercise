@@ -1,5 +1,5 @@
 ncverilog(64): 15.20-s058: (c) Copyright 1995-2018 Cadence Design Systems, Inc.
-TOOL:	ncverilog	15.20-s058: Started on May 23, 2023 at 23:29:56 CEST
+TOOL:	ncverilog	15.20-s058: Started on May 23, 2023 at 23:33:35 CEST
 ncverilog
 	+sv
 	-f files_verilog.f
@@ -35,8 +35,8 @@ Start Execution
 [1;34m
 Mult4 Working Correctly
 [0m
-        844 cycles
-Simulation complete via $finish(1) at time 117560 NS + 0
+        784 cycles
+Simulation complete via $finish(1) at time 111560 NS + 0
 ../Verilog/cpu_tb.v:324    $finish;
 ncsim> exit
-TOOL:	ncverilog	15.20-s058: Exiting on May 23, 2023 at 23:29:57 CEST  (total: 00:00:01)
+TOOL:	ncverilog	15.20-s058: Exiting on May 23, 2023 at 23:33:36 CEST  (total: 00:00:01)
